@@ -1,4 +1,4 @@
-% 2026-11-25 / v0.1. Mathematical proofs checked; novelty not established.
+% 2026-11-25 / v0.2. Mathematical proofs checked; novelty not established.
 % Engine and output are controlled by the repository .latexmkrc.
 \RequirePackage{fix-cm}
 \documentclass[a4paper,11pt]{ltjsarticle}
@@ -18,21 +18,26 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{注意}
 \renewcommand{\proofname}{証明}
-\title{射影空間上のベクトル束の有限厚化と\texorpdfstring{\\}{ }コホモロジーのJordan型}
+\title{ベクトル束の有限厚化と法線方向の変形\texorpdfstring{\\}{ }Jordan型とコホモロジーで検出できない延長}
 \author{}
-\date{2026年11月25日\quad v0.1（新規性確認前の研究草稿）}
+\date{2026年11月25日\quad v0.2（新規性確認前の研究草稿）}
 \begin{document}
 \maketitle
 \begin{abstract}
 射影空間上のベクトル束を超平面の有限無限小近傍から制限する際の
-コホモロジーの余核を，超平面方程式による中間コホモロジーへの
-冪零作用の短いJordan blockで記述する．この公式から有限次数での
-分解判定を得る．座標冪写像によるnull-correlation型の束の引き戻しでは，
-指定した超平面について還元写像が分裂する厚さを任意に大きくできる．
-階数2の三次元例では，一般超平面では一次厚化から障害が現れることも示し，
-非零係数の台ごとに最初の欠損とその次数分布を決定する．
-Hartshorne分解予想自体は未解決であり，ここでの有限厚化の定量的記述の
-独立した新規性・公表価値は引き続き確認を要する．
+コホモロジーの余核を，中間コホモロジーへの超平面方程式の
+冪零作用の短いJordan blockで記述する．
+さらに，両端の階数が1である交代形式付きモナドについて，固定した射影に関する
+還元写像が分裂する最大次数を，最初の非零の法線係数から正確に決定する．
+証明の核心は，負の捩りを持つモナド微分の変化が束の延長類として消えないことである．
+座標冪によるnull correlation bundleの引戻しに適用すると，
+すべての超平面と射影中心の対について分裂次数を分類できる．
+標数0の偶数次数の三次元例では，すべての捩りの全コホモロジー制限が全射でも
+還元写像は分裂しない．この構成から，射影平面上の安定束の間の
+コホモロジーでは検出できない延長類を明示する．
+Hartshorne分解予想の新しい次元範囲は解決していない．
+使用する束の構成とコホモロジーは既知であり，有限厚化の判定と明示例の
+独立した新規性・公表価値は確認を要する．
 \end{abstract}
 \tableofcontents
 
@@ -45,16 +50,41 @@ $N\geq 7$ なら階数 $2$ のベクトル束が直線束の直和になると�
 
 Kempf の判定法に基づく Coand\u{a}--Trautmann の補題は，すべての厚さで
 近傍上の束から超平面上の束への還元写像が分裂すれば，元の束が分解すると述べる
-\cite{CoandaTrautmann2006}．本稿では有限の厚さにおけるコホモロジーの
-持ち上がらなさを，中間コホモロジーへの超平面方程式の乗法の
-Jordan block によって正確に記述する．さらに，この障害の最初の出現次数が
-任意に大きくなる階数 $2$ の例を $\mathbb P^3$ 上で与える．
-高階数の同じ構成は奇数次元の射影空間上でも働く．
+\cite{CoandaTrautmann2006}．本稿の定理\ref{thm:jet-defect}は，同じ制限完全列を
+有限次数で比較し，持ち上げの余核を Jordan block と終端次数で正確に記述する．
+これにより，cohomology の消滅冪や regularity を用いる有限次数の判定が得られる．
 
-用いる長完全列，Horrocks の分解判定法，null-correlation 型 monad，
-有限射による引き戻しは既知の道具・構成である．以下の有限次数での公式と
-鋭い例の組合せについては，本稿に証明を与える一方，独立の新規性は未確認である．
-この原稿を Hartshorne 予想の非自明な次元範囲の解決として扱わない．
+一方，cohomology の全射性から還元写像の分裂を導くことは一般にはできない．
+この差を調べるため，定理\ref{thm:normal-coefficient-depth}では
+交代形式付きモナドの法線方向の展開を用いる．
+両端の階数が1であることにより，次数付き対称平方は三項複体となる．
+その負の捩りのコホモロジーから，最初の非零の法線係数が
+必ず非零の延長類を与えることを証明する．
+これは高階数にも適用でき，単なる数値的な必要条件を越えて，
+所定のモナド束の厚化上の還元が分裂する次数を決定する．
+対称平方モナド自体は既知であり，例えば
+\cite[p.~8, 式(41)--(45)]{TikhomirovTikhomirovVasiliev2018}にも現れる．
+本稿ではその負の捩りへの適用を，固定した射影に関する有限厚化の拡大類へ結び付ける．
+
+三次元の例に用いるモナド
+$\mathcal O(-d)\to\mathcal O^4\to\mathcal O(d)$
+は Ein の generalized null correlation bundle の構成に含まれる．
+その $H^1_*$ が完全交叉 Artin 環の捩りになることも
+\cite[式(1.1.c), Proposition 1.1]{Ein1988}の既知の結果であり，
+これらを新しい束の構成として扱わない．
+本稿では座標冪の例について，超平面と射影中心の全ての対にわたる
+実際の分裂次数を決定し，超平面方程式の台ごとの最初の cohomology 欠損と比較する．
+特に偶数 $d$ と三つの非零係数を持つ超平面から，
+安定な $E$ と $\operatorname{Ext}^1(E,E(-1))$ の非零部分空間を作り，
+その全ての元が全ての捩りの cohomology では検出されないことを示す
+（系\ref{cor:stable-four-dimensional-ghosts}）．
+
+長完全列，Horrocks の分解判定法，対称平方，null correlation 型モナド，
+有限射による引戻しは既知の道具である．
+本稿に証明を与えた有限次数の判定・明示例と，既存のモナド変形論との
+正確な重なりの確認は残る．新規性が確定した公表論文としてはまだ扱わない．
+また，以下の階数2の非分解例は $\mathbb P^3$ 上のものであり，
+Hartshorne予想の高次元の範囲の反例ではない．
 
 \section{厚化上の還元と中間コホモロジー}
 
@@ -203,7 +233,9 @@ Serre 双対性と $F^\vee$ の regularity より，$1\leq i\leq N-1$ では
 \[
  -s-i\leq t\leq r-i-1
 \]
-に含まれ，$w_i(F)\leq r+s$ である（区間が空なら全中間コホモロジーが既に零である）．系 \ref{cor:finite-split} を適用する．
+に含まれる．区間が空なら全中間コホモロジーは零である．
+空でなければ，非零の $M^i$ について $w_i(F)\leq r+s$ なので，
+系 \ref{cor:finite-split} を適用できる．
 $\operatorname{reg}(F(a))=r-a$ と
 $\operatorname{reg}(F(a)^\vee)=s+a$ から twist 不変性が従う．
 \end{proof}
@@ -234,6 +266,271 @@ $L'$ を避けるから，すべてこの開集合に含まれる．
 後者の $F$ は $\mathbb P^N$ \emph{全体}で局所自由である．
 Hartshorne 予想への応用には，形式近傍での存在だけでなく，補空間をまたぐ
 局所自由な代数化，または実際の大域的な延長の有限厚化上の構造を制御する必要がある．
+
+\section{交代形式を持つモナドの法線係数と厚化上の分裂}
+\label{sec:normal-coefficient}
+
+この節の一般定理は標数$2$でない体上で成立する。
+超平面と射影中心はその体上で定義されているものとする。
+次数が等しい多項式によるnull correlation bundleの引戻しについて、
+超平面厚化からの制限が層として分裂する最大次数を決定する。
+射影によって定める$\mathcal O_H$加群構造は結論の一部であり、固定して扱う。
+結果は三次元射影空間上の階数$2$の場合に限らず、
+両端の階数が$1$である交代形式付きモナドに適用できる。
+この節の証明は自己完結しているが、既存のモナド変形理論との比較による
+新規性の確定は残る。
+対称平方モナドを用いる方法自体は
+\cite[p.~8]{TikhomirovTikhomirovVasiliev2018}に既に記されている。
+
+\subsection{負の捩りを持つモナド変形の単射性}
+
+$m\geq4$を偶数とし、$J$を
+\[
+ J^t=-J,\qquad J^2=-I_m
+\]
+を満たす標準交代行列とする。
+たとえば$m=4$では、
+$J(v_0,v_1,v_2,v_3)^t=(-v_1,v_0,-v_3,v_2)^t$
+と取れる。
+
+\begin{lemma}[負の捩りを持つ法線変形の検出]
+\label{lem:symplectic-negative-injection}
+$X=\mathbb P^n$, $n\geq2$, $d\geq1$とし、
+\begin{equation}
+\label{eq:rank-one-end-monad}
+ \mathscr C^\bullet=
+ \bigl[
+ A=\mathcal O_X(-d)
+ \xrightarrow{\alpha=J\beta^t}
+ B=\mathcal O_X^{\oplus m}
+ \xrightarrow{\beta}
+ L=\mathcal O_X(d)
+ \bigr]
+\end{equation}
+を次数$-1,0,1$に置いたモナドとする。
+すなわち、$\alpha$は部分束の埋込み、$\beta$は全射であり、
+唯一のコホモロジー層$E$はベクトル束である。
+任意の整数$a\geq1$に対し、
+\begin{equation}
+\label{eq:negative-monad-injection}
+ H^0\bigl(X,\mathcal O_X(d-a)^{\oplus m}\bigr)
+ \longrightarrow
+ \operatorname{Ext}^1_X\bigl(E,E(-a)\bigr)
+\end{equation}
+という単射があり、行ベクトル$w$を、微分の変化
+\[
+ \Delta_w=(Jw^t,w)
+\]
+が定める拡大の類へ送る。
+したがって、この拡大が$\mathcal O_X$加群として分裂することと$w=0$は同値である。
+\end{lemma}
+
+\begin{proof}
+まず複体$\mathscr C^\bullet$に次数$0$の双線形形式
+\[
+ \omega:\mathscr C^\bullet\otimes\mathscr C^\bullet
+ \longrightarrow\mathcal O_X
+\]
+を定める。$B$上では$\omega_B(u,v)=u^tJv$とし、
+$A\otimes L$および$L\otimes A$上では通常の積、
+その他の次数の組では零とする。
+これは次数付きの意味で交代的、すなわち
+\[
+ \omega(u,v)=-(-1)^{|u||v|}\omega(v,u)
+\]
+である。
+また$\alpha^tJ=\beta$および$J\alpha=-\beta^t$より
+\[
+ \omega(Du,v)+(-1)^{|u|}\omega(u,Dv)=0
+\]
+が成り立つ。ここで$D$は$\mathscr C^\bullet$の微分である。
+したがって$\omega$は複体の射であり、$E$上に非退化な交代形式を誘導する。
+
+次数付きの交換
+$u\otimes v\mapsto(-1)^{|u||v|}v\otimes u$
+の$+1$固有部分を
+$\mathscr S^\bullet=\operatorname{Sym}^2(\mathscr C^\bullet)$
+とする。$2$が可逆なので、これはテンソル積複体の直和因子である。
+モナドは局所的に$E$と可縮な複体との直和になるため、
+$\mathscr S^\bullet$の唯一のコホモロジー層は次数$0$の
+$\operatorname{Sym}^2E$である。
+$A,L$は奇数次数にあり階数$1$なので、次数$\pm2$の項は
+$\bigwedge^2 A=\bigwedge^2 L=0$となる。
+残る項は
+\begin{align*}
+ \mathscr S^{-1}&=A\otimes B
+   =\mathcal O_X(-d)^{\oplus m},\\
+ \mathscr S^{0}&=\operatorname{Sym}^2 B\oplus(A\otimes L)
+   =\mathcal O_X^{\oplus(m(m+1)/2+1)},\\
+ \mathscr S^{1}&=B\otimes L
+   =\mathcal O_X(d)^{\oplus m}.
+\end{align*}
+
+$K=\ker(\mathscr S^0\to\mathscr S^1)$と置く。
+二つの短完全列
+\[
+ 0\longrightarrow K(-a)\longrightarrow\mathscr S^0(-a)
+ \longrightarrow\mathscr S^1(-a)\longrightarrow0,
+\]
+\[
+ 0\longrightarrow\mathscr S^{-1}(-a)\longrightarrow K(-a)
+ \longrightarrow\operatorname{Sym}^2E(-a)\longrightarrow0
+\]
+を考える。$n\geq2$, $a\geq1$より
+\[
+ H^0(\mathscr S^0(-a))=H^1(\mathscr S^0(-a))=0,
+ \qquad H^1(\mathscr S^{-1}(-a))=0.
+\]
+従って連結準同型は単射
+\begin{equation}
+\label{eq:symmetric-square-edge}
+ H^0(\mathscr S^1(-a))
+ \hookrightarrow H^1(\operatorname{Sym}^2E(-a))
+\end{equation}
+を与える。
+
+次にこの射が所要の拡大を検出することを、符号を含めて確認する。
+形式$\omega$を用いて、複体の射
+\[
+ \Phi:\mathscr S^\bullet
+ \longrightarrow\mathcal H om^\bullet(\mathscr C^\bullet,
+                                      \mathscr C^\bullet)
+\]
+を
+\[
+ \Phi\bigl(u\otimes v+(-1)^{|u||v|}v\otimes u\bigr)(t)
+ =u\,\omega(v,t)+(-1)^{|u||v|}v\,\omega(u,t)
+\]
+で定める。$\omega$が複体の射であることから、これは微分と可換である。
+次数$0$のコホモロジー上では
+$\operatorname{Sym}^2E\simeq\mathfrak{sp}(E,\omega)$
+を与える。右辺は交代形式を無限小に保つ自己準同型の部分束であり、
+交代随伴による固有空間分解から$\mathcal E nd(E)$の直和因子である。
+従って
+\[
+ H^1(\operatorname{Sym}^2E(-a))
+ \hookrightarrow H^1(\mathcal E nd(E)(-a))
+ =\operatorname{Ext}^1_X(E,E(-a))
+\]
+も単射である。
+
+次数$1$の項$B\otimes L$の元$b$は、$\Phi$によって
+$A\to B$の成分$b$と$B\to L$の成分$b^tJ$を持つ射へ移る。
+$b=Jw^t$ならば$b^tJ=w$なので、その像は正確に
+$\Delta_w=(Jw^t,w)$である。
+$D\Delta_w+\Delta_wD=0$は$J$の交代性からも直接確認できる。
+項ごとに分裂する複体の短完全列
+\[
+ 0\longrightarrow\mathscr C^\bullet(-a)
+ \longrightarrow\mathscr C^\bullet_w
+ \longrightarrow\mathscr C^\bullet\longrightarrow0,
+ \qquad
+ D_w=\begin{pmatrix}D&0\\ \Delta_w&D\end{pmatrix}
+\]
+の連結射は$\Delta_w$で表される。
+唯一のコホモロジー層へ移ると、これは
+$0\to E(-a)\to E_w\to E\to0$の拡大類である。
+従って\eqref{eq:symmetric-square-edge}と$\Phi$の合成が
+\eqref{eq:negative-monad-injection}に一致し、単射性が従う。
+$w=0$の場合には複体自体が直和なので、逆向きも明らかである。
+\end{proof}
+
+\subsection{最初の法線係数による分裂次数の決定}
+
+\begin{theorem}[法線係数による厳密な厚化分裂次数]
+\label{thm:normal-coefficient-depth}
+$N\geq3$とし、$m\geq4$を偶数とする。
+$f_1,\ldots,f_m$を$\mathbb P^N$上で共通零点を持たない次数$d\geq1$の斉次多項式とする。
+行ベクトル$f=(f_1,\ldots,f_m)$に付随するモナド
+\[
+ \mathcal O_{\mathbb P^N}(-d)
+ \xrightarrow{Jf^t}
+ \mathcal O_{\mathbb P^N}^{\oplus m}
+ \xrightarrow{f}
+ \mathcal O_{\mathbb P^N}(d)
+\]
+のコホモロジー束を$F_f$とする。その階数は$m-2$である。
+超平面$H=(h=0)$と点$p\notin H$を固定し、$p$を中心とする射影で
+$H_k=(h^{k+1}=0)$の$\mathcal O_H$加群構造を定める。
+$h(p)=1$となるベクトル代表を取り、$x=y+hp$に従って
+\begin{equation}
+\label{eq:normal-polynomial-expansion}
+ f_i(y+hp)=\sum_{a=0}^d h^a f_{i,a}(y),
+ \qquad f_{i,a}\in H^0(H,\mathcal O_H(d-a))
+\end{equation}
+と展開する。ここで$y$は$H$上の座標の射影による引戻しである。
+\[
+ \nu=\min\{a\geq1\mid(f_{1,a},\ldots,f_{m,a})\ne0\}
+\]
+と置くと$1\leq\nu\leq d$であり、制限
+\begin{equation}
+\label{eq:normal-depth-quotient}
+ F_f|_{H_k}\longrightarrow F_f|_H
+\end{equation}
+が$\mathcal O_H$線形な右逆を持つことと$0\leq k<\nu$は同値である。
+
+特に$N$が奇数で$m=N+1$ならば、階数$N-1$の束についての結果となる。
+$N=3$, $m=4$は階数$2$の場合である。
+\end{theorem}
+
+\begin{proof}
+共通零点がないので右の写像は全射であり、$Jf^t$も至る所で非零である。
+従ってこれは部分束の埋込みである。
+$fJf^t=0$よりモナドが定まり、そのコホモロジーはベクトル束となる。
+また最高次の法線係数は$f_{i,d}=f_i(p)$であり、少なくとも一つは非零である。
+従って$\nu$は存在して$\nu\leq d$となる。
+
+$E=F_f|_H$とし、制限モナドを$\mathscr C_0^\bullet$と書く。
+$k<\nu$ならば\eqref{eq:normal-polynomial-expansion}の正次数の項は
+$h^{k+1}$を法として全て消える。
+よって厚化上のモナドは$H$上のモナドの引戻しであり、
+そのコホモロジーも引戻しである。
+これが\eqref{eq:normal-depth-quotient}の実際の右逆を与える。
+
+次数$\nu$では、$\mathcal O_H$加群として
+\[
+ \mathcal O_{H_\nu}=\bigoplus_{j=0}^{\nu}\mathcal O_H(-j)
+\]
+と分解する。各モナド項をこの分解に従って書くと、
+微分は$\mathscr C_0^\bullet(-j)$上の対角成分と、
+層$j=0$から層$j=\nu$への唯一の非対角成分
+\[
+ \Delta_\nu=(Jf_\nu^t,f_\nu),
+ \qquad f_\nu=(f_{1,\nu},\ldots,f_{m,\nu}),
+\]
+からなる。正の層$j>0$からの同種の項は$h^{\nu+j}=0$のため消える。
+従って複体そのものが、二層の拡大を定める複体と
+$\bigoplus_{j=1}^{\nu-1}\mathscr C_0^\bullet(-j)$との直和に分解する。
+コホモロジーを取ると
+\[
+ F_f|_{H_\nu}\simeq G_\nu\oplus
+                \bigoplus_{j=1}^{\nu-1}E(-j),
+ \qquad
+ 0\longrightarrow E(-\nu)\longrightarrow G_\nu
+ \longrightarrow E\longrightarrow0
+\]
+を得る。
+$f_\nu\ne0$なので、補題\ref{lem:symplectic-negative-injection}を
+$X=H=\mathbb P^{N-1}$および$a=\nu$に適用すると、最後の拡大は非分裂である。
+制限$F_f|_{H_\nu}\to E$は余分な直和因子上で零となり、
+$G_\nu\to E$に一致する。
+従って仮に右逆があれば、それを$G_\nu$へ射影して非分裂拡大の右逆を得てしまう。
+これが矛盾である。
+より高い次数の右逆は$H_\nu$へ制限して右逆を与えるので、
+$k\geq\nu$の全てを排除できる。
+\end{proof}
+
+\begin{remark}
+\label{rem:normal-derivative-order}
+標数$0$では展開を微分することにより
+\[
+ \nu=1+\min_i\operatorname{ord}_H(\partial_p f_i)
+\]
+とも書ける。零多項式の位数は$+\infty$とする。
+これは係数展開の別表現であり、任意の束についての形式延長可能性を意味しない。
+本定理では大域的に存在するモナド束と固定した射影を使っている。
+\end{remark}
+
 
 \section{任意の次数で初めて現れる障害}
 
@@ -322,7 +619,7 @@ $N\geq3$ により成り立つので，次数付き加群として
 \[
  M^1(F_d)\simeq
  \left(S/(x_0^d,\ldots,x_N^d)\right)(d).
- \label{eq:nullcorr-module}
+
 \]
 この加群は $\Bbbk[h]$-加群として
 \[
@@ -349,6 +646,60 @@ $N\geq3$ により成り立つので，次数付き加群として
 \begin{proof}
 定理 \ref{thm:sharp-examples} で $N=3$，$d=k+1$ と取る．
 \end{proof}
+
+\subsection{超平面と射影中心の全ての対に対する分類}
+
+\begin{corollary}[座標冪モナドの全射影対の分類]
+\label{cor:coordinate-power-full-retractions}
+$\operatorname{char}\Bbbk=0$とする。$N\geq3$を奇数とし、$m=N+1$,
+$f_i=x_i^d$ $(0\leq i\leq N)$とする。
+$d\geq2$のとき、$F_f|_{H_1}\to F_f|_H$が右逆を持つのは、
+$H=(x_j=0)$が座標超平面で、射影中心が対応する座標点$p=e_j$の場合に限る。
+この場合の最初の非分裂次数は$d$であり、
+その他の全ての超平面と射影中心の対では最初の非分裂次数は$1$である。
+$d=1$では全ての対について最初の非分裂次数は$1$である。
+\end{corollary}
+
+\begin{proof}
+$\ell_i=x_i|_H$と書くと最初の法線係数は
+\[
+ f_{i,1}=d p_i\ell_i^{d-1}
+\]
+である。
+$d\geq2$で$H$が座標超平面でなければ、全ての$\ell_i$が非零なので、
+係数ベクトルが零であるためには$p_i=0$が全ての$i$について必要となり矛盾する。
+$H=(x_j=0)$の場合は$\ell_j$だけが零なので、
+全係数の消滅は$p=e_j$と同値である。
+この対では$x_j^d=h^d$であり、その他の座標冪は法線変数に依存しないから$\nu=d$である。
+$d=1$の場合には最初の係数ベクトルは$p$そのもので、必ず非零である。
+定理\ref{thm:normal-coefficient-depth}を適用すればよい。
+\end{proof}
+
+\begin{corollary}[奇標数での Frobenius による遅延]
+\label{cor:positive-characteristic-depth}
+座標冪モナドの体の標数を奇素数 $p$ とし，$d=p^a u$，$p\nmid u$ と書く．
+座標超平面と対応する座標点の対では，最初の非分裂次数は $d$ である．
+その他の全ての対では最初の非分裂次数は $p^a$ である．
+特に $d$ が $p$ の冪なら，全ての対で $d-1$ 次まで分裂し，$d$ 次で非分裂となる．
+\end{corollary}
+\begin{proof}
+$r=p^a$ と置くと
+\[
+ (\ell_i+h z_i)^d=(\ell_i^r+h^r z_i^r)^u.
+\]
+従って $1,\ldots,r-1$ 次の法線係数は零で，$r$ 次の係数は
+$u z_i^r\ell_i^{d-r}$ である．$u>1$ なら，このベクトルが零になるのは
+座標超平面と対応する座標点の対だけであり，その場合には初出次数が $d$ となる．
+$u=1$ なら展開の正次数項は $h^d z_i^d$ だけで，係数ベクトルは非零である．
+定理\ref{thm:normal-coefficient-depth}から結論が従う．
+\end{proof}
+
+\begin{remark}
+この系は法線係数による分裂次数についての主張である．
+以下の Jordan 型の表と安定束の例には標数0を仮定する．
+例えば純粋な Frobenius 冪では，制限した多項式の線形独立性が失われ得るので，
+安定性や cohomology の不可視性を同じ形で移してはならない．
+\end{remark}
 
 \section{同じ束における超平面の選択への依存}
 
@@ -454,16 +805,121 @@ weight が $2j-\sigma$ であることから，最低次数 $j$ の chain は
 $a_j-a_{j-1}$ となる．これで \eqref{eq:sl2-blocks} が証明された．
 \end{proof}
 
-\begin{remark}[欠損が消えても分裂したとは限らない]
-表の $q=3$，$d$ 偶数の行では，一次厚化で $D^0$ が消えることだけを述べている．
-これを一次厚化上の $\mathcal O_H$-加群としての分裂と読み替えることはできない．
-その分裂の有無は別の延長類の問題である．
-一般超平面と座標超平面の二つの場合は，それぞれ欠損と明示的な引き戻しにより
-実際の分裂・非分裂の境界が確定している．
+\subsection{安定束の間のコホモロジーで検出できない延長}
+
+\begin{corollary}[安定束の間のコホモロジーで検出できない射]
+\label{cor:stable-four-dimensional-ghosts}
+標数 $0$ とし，$d\geq2$ を偶数とする．
+定理\ref{thm:sharp-examples}の $\mathbb P^3$ 上の階数 $2$ ベクトル束 $F_d$ を取り，
+$h=\sum_{i=0}^3c_ix_i$ の係数のうちちょうど三つが非零であるとする．
+$H=V(h)\simeq\mathbb P^2$，$E=F_d|_H$ と置く．
+すると $E$ は slope-stable であり，
+\[
+ G\subseteq\operatorname{Ext}^1_H(E,E(-1))
+   =\operatorname{Hom}_{D^b(H)}(E,E(-1)[1])
+\]
+という $4$ 次元部分空間が存在して，その任意の元 $\eta$ が誘導する写像
+\[
+ H^j(H,E(t))\xrightarrow{\ \eta(t)\ }
+ H^{j+1}(H,E(t-1))
+\]
+は，すべての $j,t\in\mathbb Z$ に対して零である．
+特に $G$ の任意の非零元は非零の導来圏の射であるが，
+すべての直線束のすべての shift から $\operatorname{Hom}$ を取っても零写像を誘導する．
+この明示された意味で，$G$ は直線束に関する ghost の部分空間である．
+\end{corollary}
+
+\begin{proof}
+まず安定性を確認する．$H$ 上の四つの monad の成分
+$g_i=(x_i|_H)^d$ は線形独立である．実際，座標の番号と非零定数倍を調整すれば，
+この主張は $x^d,y^d,(a x+b y)^d,z^d$ の独立性に帰着する．
+ここで $a,b\ne0$ であり，$d\geq2$ と標数 $0$ によって
+$(a x+b y)^d$ は零でない混合項を持つ．
+$K=\ker(\mathcal O_H^4\to\mathcal O_H(d))$ と置くと，この独立性から
+$H^0(K)=0$ である．
+\[
+ 0\longrightarrow\mathcal O_H(-d)\longrightarrow K\longrightarrow E\longrightarrow0
+\]
+と $H^1(\mathcal O_H(-d))=0$ から $H^0(E)=0$ を得る．
+$E$ は階数 $2$，$c_1(E)=0$ なので，これにより slope-stable である．
+詳しくは，もし slope が非負の階数 $1$ の部分層が存在すれば，
+その二重双対 $\mathcal O_H(a)$，$a\geq0$，から $E$ への零でない射が
+余次元 $2$ の集合を越えて延長する．これを $\mathcal O_H(a)$ の零でない切断と合成すると
+$H^0(E)\ne0$ となり，矛盾する．
+
+次に $V=\Bbbk^4$ とし，$v=(v_0,v_1,v_2,v_3)\in V$ に対して
+\[
+ w_v=d\bigl(v_0(x_0|_H)^{d-1},\ldots,v_3(x_3|_H)^{d-1}\bigr)
+ \in H^0\bigl(H,\mathcal O_H(d-1)^4\bigr)
+\]
+と置く．補題\ref{lem:symplectic-negative-injection}の $a=1$ による単射を
+$w_v$ に適用して得られる元を $\eta_v\in\operatorname{Ext}^1(E,E(-1))$ とする．
+$H$ は座標超平面ではないので，四つの $x_i|_H$ はすべて零でない．
+従って $v\mapsto w_v$ は単射であり，$v\mapsto\eta_v$ も単射である．
+その像を $G$ とすれば $\dim G=4$ となる．
+
+$h(v)=1$ の場合，$v$ を中心とする線形射影を用いて
+\[
+ (y_i+h v_i)^d=y_i^d+h\,d v_i y_i^{d-1}\pmod{h^2}
+\]
+と展開すると，$\eta_v$ はその射影に関する還元列
+\[
+ 0\longrightarrow E(-1)\longrightarrow F_d|_{H_1}
+ \longrightarrow E\longrightarrow0
+\]
+の延長類である．
+命題\ref{prop:support-jets}の $q=3$，$d$ 偶数の場合によれば，
+$h$ の $H^1_*(F_d)$ への乗法には長さ $1$ の Jordan block がない．
+また $F_d^\vee\simeq F_d$ と Serre 双対性により
+\[
+ H^2(F_d(t))\simeq H^1(F_d(-t-4))^\vee
+\]
+であり，乗法 $h$ は双対写像に対応する．
+従って $H^2_*(F_d)$ にも長さ $1$ の block はない．
+定理\ref{thm:jet-defect}を $k=1$ に適用すると，すべての twist において
+\[
+ H^j(F_d|_{H_1}(t))\longrightarrow H^j(E(t))
+ \quad(j=0,1)
+\]
+は全射である．$j=2$ の連結写像の標的は $H^3(E(t-1))=0$ である．
+したがって上の還元列のすべての連結写像，すなわち
+$\eta_v$ が誘導するすべてのコホモロジー写像は零である．
+
+この消滅条件は $\eta$ に関する線形条件である．
+$h(v)=1$ を満たす $v$ の集合は線形空間 $V$ を張る．
+実際，一点 $v_0$ を選べば，$u\in\ker h$ は
+$(v_0+u)-v_0$ と表せる．よって消滅はすべての $\eta_v\in G$ に及ぶ．
+最後の導来圏の記述は
+\[
+ \operatorname{Hom}_{D^b(H)}(\mathcal O_H(-t)[-j],E)
+ =H^j(H,E(t))
+\]
+から従う．
+\end{proof}
+
+\begin{remark}
+上の系は，ghost 全体の次元が $4$ であるとは主張しない．
+特定の法線微分から得られる $4$ 次元部分空間を構成している．
+またこれは対象の零性の検出ではなく，二つの非零対象の間の射の検出についての主張である．
+直線束の有限個の shift を含む Beilinson 型の生成系に対しても同じ非検出が起こる．
+この解釈および明示例の新規性は，既存の ghost・生成時間・monad の変形理論との
+比較を経て評価する必要がある．
 \end{remark}
 
+\begin{example}
+\label{ex:quadratic-invisible}
+$d=2$，$H=(x_0+x_1+x_2=0)$ と取れば，
+$H^1_*(F_2)$ の $h$-Jordan block は長さ $4$ が二個，長さ $2$ が四個である．
+$H^2_*(F_2)$ も双対性により同じ長さを持つ．
+したがって全ての $j,t$ で $H^j(F_2|_{H_1}(t))\to H^j(E(t))$ は全射だが，
+どの線形射影を選んでも $F_2|_{H_1}\to E$ に $\mathcal O_H$ 線形な右逆はない．
+ここで $E$ は $c_1=0,c_2=4$ の安定な階数2束である．
+\end{example}
+
+
 \begin{remark}[最初の延長類と欠損次元]
-$E_d=F_d|_H$ と置く．$F_d|_{H_{d-1}}$ の射影による自明化を固定すると，
+$H=(x_N=0)$ と対応する座標点からの射影を固定し，$E_d=F_d|_H$ と置く．
+$F_d|_{H_{d-1}}$ の射影による自明化を固定すると，
 最初の還元列は
 \[
  0\longrightarrow\bigoplus_{j=1}^{d}E_d(-j)
@@ -489,9 +945,13 @@ $H^0(E_d(t))\to H^1(E_d(t-d))$ の像の次元を次数別に足すと，
 特に，既に存在する大域的な束の有限厚化と，
 命題 \ref{prop:tautological-extension} の任意に作れる形式延長とを混同しないことが肝要である．
 
-具体的には，一般超平面の乗法に関する Jordan 型の制約，
-安定性・制限定理・最小 monad が課す制約，および
-有限次数の $\operatorname{Ext}^1(E,E(-j))$ と欠損公式の比較が次の問題となる．
+定理\ref{thm:normal-coefficient-depth}は両端が階数1のモナドについて
+実際の延長類を検出したが，一般の階数2束の最小モナドでは
+非分解な中間項や多階数の端が現れる．その場合，対称平方の長さと
+負の捩りのコホモロジーが変わり，今回の単射性を直接は適用できない．
+この障害を明示して一般化できる条件を求めること，および
+系\ref{cor:stable-four-dimensional-ghosts}の不可視な延長全体と積構造を調べることが
+具体的な次の課題である．一般の束へ strong Lefschetz 性を仮定してはならない．
 定理 \ref{thm:sharp-examples} は固定次元でも障害の出現次数が発散するため，
 次数・Chern 類・regularity 等を無視した一様な有限次数の議論は成立しない．
 

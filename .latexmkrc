@@ -14,4 +14,3 @@ $out_dir = '../build';
 
 # Keep SyncTeX beside the PDF for the editor's forward and inverse search.
 # Do not enable continuous preview (-pvc); VS Code can build when saving.
-
