@@ -1,0 +1,500 @@
+% 2026-11-25 / v0.1. Mathematical proofs checked; novelty not established.
+% Engine and output are controlled by the repository .latexmkrc.
+\RequirePackage{fix-cm}
+\documentclass[a4paper,11pt]{ltjsarticle}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[margin=25mm]{geometry}
+\usepackage{booktabs}
+\usepackage[unicode,pdfusetitle,colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue]{hyperref}
+\numberwithin{equation}{section}
+\theoremstyle{plain}
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命題}
+\newtheorem{lemma}[theorem]{補題}
+\newtheorem{corollary}[theorem]{系}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定義}
+\newtheorem{example}[theorem]{例}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{注意}
+\renewcommand{\proofname}{証明}
+\title{射影空間上のベクトル束の有限厚化と\texorpdfstring{\\}{ }コホモロジーのJordan型}
+\author{}
+\date{2026年11月25日\quad v0.1（新規性確認前の研究草稿）}
+\begin{document}
+\maketitle
+\begin{abstract}
+射影空間上のベクトル束を超平面の有限無限小近傍から制限する際の
+コホモロジーの余核を，超平面方程式による中間コホモロジーへの
+冪零作用の短いJordan blockで記述する．この公式から有限次数での
+分解判定を得る．座標冪写像によるnull-correlation型の束の引き戻しでは，
+指定した超平面について還元写像が分裂する厚さを任意に大きくできる．
+階数2の三次元例では，一般超平面では一次厚化から障害が現れることも示し，
+非零係数の台ごとに最初の欠損とその次数分布を決定する．
+Hartshorne分解予想自体は未解決であり，ここでの有限厚化の定量的記述の
+独立した新規性・公表価値は引き続き確認を要する．
+\end{abstract}
+\tableofcontents
+
+\section{問題の位置づけと結果の範囲}
+
+Hartshorne の分解予想は，標数 $0$ の代数閉体上の $\mathbb P^N$ において
+$N\geq 7$ なら階数 $2$ のベクトル束が直線束の直和になると主張する．
+本稿はこの予想を解決しない．扱うのは，\emph{既に射影空間全体に存在する}
+ベクトル束を，超平面の有限無限小近傍から観察する際の障害である．
+
+Kempf の判定法に基づく Coand\u{a}--Trautmann の補題は，すべての厚さで
+近傍上の束から超平面上の束への還元写像が分裂すれば，元の束が分解すると述べる
+\cite{CoandaTrautmann2006}．本稿では有限の厚さにおけるコホモロジーの
+持ち上がらなさを，中間コホモロジーへの超平面方程式の乗法の
+Jordan block によって正確に記述する．さらに，この障害の最初の出現次数が
+任意に大きくなる階数 $2$ の例を $\mathbb P^3$ 上で与える．
+高階数の同じ構成は奇数次元の射影空間上でも働く．
+
+用いる長完全列，Horrocks の分解判定法，null-correlation 型 monad，
+有限射による引き戻しは既知の道具・構成である．以下の有限次数での公式と
+鋭い例の組合せについては，本稿に証明を与える一方，独立の新規性は未確認である．
+この原稿を Hartshorne 予想の非自明な次元範囲の解決として扱わない．
+
+\section{厚化上の還元と中間コホモロジー}
+
+体 $\Bbbk$ 上の $\mathbb P^N$，$N\geq 2$，を考える．
+$h\in H^0(\mathbb P^N,\mathcal O(1))$ は零でない一次式とし，
+\[
+ H=V(h),\qquad H_k=V(h^{k+1})\quad(k\geq 0)
+\]
+と置く．したがって $H_0=H$ である．$F$ は $\mathbb P^N$ 上のベクトル束とし，
+$E=F|_H$，
+\[
+ M^i=H^i_*(F)=\bigoplus_{t\in\mathbb Z}H^i(\mathbb P^N,F(t))
+ \qquad(1\leq i\leq N-1)
+\]
+と書く．各 $M^i$ は有限次元次数付き $\Bbbk$-空間であり，
+$h$ の乗法は次数 $1$ の冪零作用素である．ここで有限次元性は，正の側で
+Serre 消滅，負の側で Serre 双対性と $F^\vee$ に対する Serre 消滅から従う．
+
+$k\geq 0$ と整数 $t$ に対し，次の余核を持ち上げの欠損と呼ぶ：
+\[
+ D^{i-1}_{k,t}(F,h)=\operatorname{coker}\left(
+ H^{i-1}(H_k,F|_{H_k}(t))\longrightarrow H^{i-1}(H,E(t))\right).
+\]
+この定義に射影の選択は要らない．
+
+\begin{theorem}[有限厚化の欠損公式]\label{thm:jet-defect}
+すべての $1\leq i\leq N-1$，$k\geq 0$，$t\in\mathbb Z$ に対して，自然な同型
+\[
+ D^{i-1}_{k,t}(F,h)\simeq
+ \frac{\ker\!\left(h:M^i_{t-1}\longrightarrow M^i_t\right)}
+ {h^k\ker\!\left(h^{k+1}:M^i_{t-k-1}\longrightarrow M^i_t\right)}
+ \tag{\ast}\label{eq:jet-defect}
+\]
+がある．$M^i$ の次数付き $\Bbbk[h]$-加群としての Jordan 分解において，
+生成元次数 $a$，長さ $\ell$ の block は，$\ell\leq k$ の場合に限り
+$D^{i-1}_{k,a+\ell}(F,h)$ に $1$ 次元寄与する．特に
+\[
+ \sum_t\dim_\Bbbk D^{i-1}_{k,t}(F,h)
+ =\#\{M^i\text{ の }h\text{-Jordan block で長さが }k\text{ 以下のもの}\}.
+\]
+\end{theorem}
+
+\begin{proof}
+二つの短完全列
+\[
+\begin{array}{ccccccccc}
+0&\longrightarrow&F(t-k-1)&\xrightarrow{\ h^{k+1}\ }&F(t)
+ &\longrightarrow&F|_{H_k}(t)&\longrightarrow&0\\
+ &&\downarrow h^k&&\Vert&&\downarrow&&\\
+0&\longrightarrow&F(t-1)&\xrightarrow{\ h\ }&F(t)
+ &\longrightarrow&E(t)&\longrightarrow&0
+\end{array}
+\]
+を比較する．上段と下段の連結写像をそれぞれ $\delta_k,\delta_0$ と書く．
+可換性から $\delta_0\circ\operatorname{res}=h^k\delta_k$ である．
+下段の完全性により
+\[
+ \operatorname{im}\delta_0=\ker(h:M^i_{t-1}\to M^i_t).
+\]
+また $\ker\delta_0$ は $H^{i-1}(F(t))$ の像であり，この像は上段を経由するので
+還元写像の像に含まれる．したがって所望の余核は
+$\operatorname{im}\delta_0/\delta_0(\operatorname{im}\operatorname{res})$ に同型である．
+上段の完全性から
+\[
+ \operatorname{im}\delta_k=
+ \ker(h^{k+1}:M^i_{t-k-1}\to M^i_t)
+\]
+を代入すると \eqref{eq:jet-defect} を得る．分母が分子に含まれることは
+$h\cdot h^k=h^{k+1}$ からも直接確認できる．
+
+次数付き Jordan 分解は，有限長次数付き $\Bbbk[h]$-加群の構造定理から得られる．
+一つの block を
+\[
+ \Bbbk v\oplus\Bbbk hv\oplus\cdots\oplus\Bbbk h^{\ell-1}v,
+ \qquad\deg v=a
+\]
+と書く．$\ker h$ は $h^{\ell-1}v$ で生成され，次数は $a+\ell-1$ である．
+この元が $h^k\ker h^{k+1}$ に属するための必要十分条件は $\ell\geq k+1$ である．
+それ以外，すなわち $\ell\leq k$ では quotient に残り，
+\eqref{eq:jet-defect} の添字は $t=a+\ell$ となる．各 block で計算すれば結論を得る．
+\end{proof}
+
+\begin{corollary}[短い Jordan block による障害]\label{cor:short-block}
+$1\leq i\leq N-1$ を固定する．次の条件は同値である：
+\begin{enumerate}
+\item すべての $t$ で $H^{i-1}(F|_{H_k}(t))\to H^{i-1}(E(t))$ が全射である．
+\item $M^i$ の $h$-Jordan block はすべて長さが $k+1$ 以上である．
+\end{enumerate}
+$M^i=0$ の場合，第二の条件は空虚に成立するものとする．
+\end{corollary}
+
+\begin{proof}
+定理 \ref{thm:jet-defect} の各寄与は非負であり，欠損がすべて消えることと
+短い block が存在しないことが同値である．
+\end{proof}
+
+\section{有限次数での分解判定とその限界}
+
+$p\notin H$ を固定し，線形射影
+$\pi:\mathbb P^N\setminus\{p\}\to H$ を取る．
+$H_k$ はこの開集合に含まれ，$\pi$ により $\mathcal O_{H_k}$ と $F|_{H_k}$ を
+$\mathcal O_H$-加群とみなせる．$\mathcal O_{H_k}$ の分解は
+\[
+ \pi_*\mathcal O_{H_k}\simeq\bigoplus_{j=0}^k\mathcal O_H(-j)
+\]
+である．以下の分裂はこの $\mathcal O_H$-加群としての分裂を意味する．
+$\mathcal O_{H_k}$-加群としての分裂と取り違えない．
+
+\begin{corollary}[有限長コホモロジーによる判定]\label{cor:finite-split}
+$F|_{H_k}\to E$ に $\mathcal O_H$-線形な切断があると仮定する．
+すると各 $M^i$ のすべての $h$-Jordan block は長さが $k+1$ 以上である．
+特に，$h^kM^i=0$ が $1\leq i\leq N-1$ のすべてで成立するなら $F$ は分解する．
+
+さらに $M^i\neq0$ の場合に
+\[
+ w_i(F)=\max\{t\mid M^i_t\neq0\}-\min\{t\mid M^i_t\neq0\}+1
+\]
+と置き，$M^i=0$ では $w_i(F)=0$ とする．
+$k\geq\max_i w_i(F)$ なら同じ結論が成立する．
+\end{corollary}
+
+\begin{proof}
+切断を $\mathcal O_H(t)$ で捻りコホモロジーを取ると，
+系 \ref{cor:short-block} の全射性を得る．
+一方 $h^kM^i=0$ なら全 block の長さは $k$ 以下なので，
+この二条件の下では $M^i=0$ でなければならない．
+Horrocks の分解判定法 \cite{Horrocks1964} から $F$ が分解する．
+次数 $1$ の乗法の Jordan block の長さはコホモロジーの次数幅以下なので，最後の主張も従う．
+\end{proof}
+
+\begin{corollary}[regularity による有限上界]\label{cor:regularity-jet}
+$r=\operatorname{reg}(F)$，$s=\operatorname{reg}(F^\vee)$ とする．
+$k\geq r+s$ かつ $k\geq0$ のとき，$F|_{H_k}\to E$ に
+$\mathcal O_H$-線形な切断があれば $F$ は分解する．
+和 $r+s$ は $F$ の twist で不変である．
+\end{corollary}
+
+\begin{proof}
+regularity の消滅定理より $H^i(F(t))=0$ は $t\geq r-i$ で成立する．
+Serre 双対性と $F^\vee$ の regularity より，$1\leq i\leq N-1$ では
+\[
+ H^i(F(t))^\vee\simeq H^{N-i}(F^\vee(-t-N-1))=0
+ \quad\text{if }t\leq-s-i-1.
+\]
+したがって $M^i$ の支持は
+\[
+ -s-i\leq t\leq r-i-1
+\]
+に含まれ，$w_i(F)\leq r+s$ である（区間が空なら全中間コホモロジーが既に零である）．系 \ref{cor:finite-split} を適用する．
+$\operatorname{reg}(F(a))=r-a$ と
+$\operatorname{reg}(F(a)^\vee)=s+a$ から twist 不変性が従う．
+\end{proof}
+
+\begin{remark}[コホモロジーの全射性と加群の分裂]
+系 \ref{cor:short-block} はコホモロジーの全射性の必要十分条件であり，
+$F|_{H_k}\to E$ の $\mathcal O_H$-加群としての分裂の必要十分条件ではない．
+後者から前者が従う方向だけを用いている．
+また，$h$-Jordan block を一つの $h$ について測ることと，一般の一次式について
+測ることは別である．超平面を動かす際はこの区別を保持する必要がある．
+\end{remark}
+
+\begin{proposition}[形式延長の存在自体には障害がない]\label{prop:tautological-extension}
+$L\simeq\mathbb P^n$ を $\mathbb P^{n+m}$ の線形部分空間とし，
+$L'\simeq\mathbb P^{m-1}$ を互いに交わらない補線形空間とする．
+$L$ 上の任意のベクトル束 $E$ は
+$\mathbb P^{n+m}\setminus L'$ 上，および $L$ のすべての有限無限小近傍上へ
+互換的に延長する．
+\end{proposition}
+
+\begin{proof}
+線形射影 $\pi:\mathbb P^{n+m}\setminus L'\to L$ は $L$ 上で恒等写像なので，
+$\pi^*E$ が求める延長である．$L$ の有限無限小近傍の位相空間は $L$ と等しく，
+$L'$ を避けるから，すべてこの開集合に含まれる．
+\end{proof}
+
+この命題と有限次数判定は矛盾しない．前者は補空間を除いた開集合での延長であり，
+後者の $F$ は $\mathbb P^N$ \emph{全体}で局所自由である．
+Hartshorne 予想への応用には，形式近傍での存在だけでなく，補空間をまたぐ
+局所自由な代数化，または実際の大域的な延長の有限厚化上の構造を制御する必要がある．
+
+\section{任意の次数で初めて現れる障害}
+
+\begin{theorem}[冪写像で引き戻した null-correlation 型の例]\label{thm:sharp-examples}
+$N=2m+1\geq3$ は奇数，$d\geq1$ は整数とする．
+$\mathbb P^N$ 上の複体
+\[
+ 0\longrightarrow\mathcal O(-d)\xrightarrow{\alpha_d}
+ \mathcal O^{N+1}\xrightarrow{\beta_d}\mathcal O(d)\longrightarrow0,
+\]
+\[
+ \beta_d=(x_0^d,x_1^d,\ldots,x_N^d),\qquad
+ \alpha_d=(-x_1^d,x_0^d,-x_3^d,x_2^d,\ldots,-x_N^d,x_{N-1}^d)^{\mathsf T}
+\]
+の中央コホモロジーを $F_d$ とする．すると以下が成立する．
+\begin{enumerate}
+\item $F_d$ は階数 $N-1$ のベクトル束であり，
+      $c_1(F_d)=0$，$c_2(F_d)=d^2$ で，直線束の直和に分解しない．
+      特に $N=3$ では階数 $2$ である．
+\item $H=V(x_N)$，$h=x_N$ とし，最後の座標を除く射影を用いる．
+      $0\leq k\leq d-1$ では
+      \[
+       F_d|_{H_k}\simeq\pi^*(F_d|_H)
+      \]
+      であり，還元 $F_d|_{H_k}\to F_d|_H$ は $\mathcal O_H$-加群として分裂する．
+\item この還元は $k=d$ では分裂しない．より正確には
+      \[
+       \sum_{t\in\mathbb Z}\dim D^0_{d,t}(F_d,x_N)\,z^t
+        =(1+z+\cdots+z^{d-1})^N.
+      \]
+      従って最初の欠損の総次元は $d^N$ である．$k\geq d$ でもこの同じ公式が成立する．
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+$\beta_d\alpha_d=0$ は各対の打消しから従う．座標の $d$ 乗は共通零点を持たないので
+$\beta_d$ は全射であり，$\alpha_d$ は各点で零でない．
+従って $K_d=\ker\beta_d$ は階数 $N$ のベクトル束であり，
+$\alpha_d$ は $K_d$ の中に直線部分束を定める．その商 $F_d$ は階数 $N-1$ である．
+二つの短完全列から
+\[
+ c(F_d)=\frac1{(1-dH)(1+dH)}=\frac1{1-d^2H^2}
+\]
+を $\mathbb Z[H]/(H^{N+1})$ 内で得る．
+仮に $F_d=\bigoplus_{j=1}^{N-1}\mathcal O(a_j)$ なら
+$\sum_j a_j=0$ であり，
+\[
+ c_2(F_d)=\sum_{u<v}a_ua_v=-\frac12\sum_j a_j^2\leq0
+\]
+となる．これは $d^2>0$ に反する．
+
+冪写像
+\[
+ f_d:\mathbb P^N\longrightarrow\mathbb P^N,
+ \qquad[x_0:\cdots:x_N]\longmapsto[x_0^d:\cdots:x_N^d]
+\]
+によって monad を引き戻すと，上記の monad を得る．
+二つの短完全列はいずれも局所自由な商を持つので引き戻しで完全性が保存され，
+$F_d\simeq f_d^*F_1$ である．$k\leq d-1$ なら $x_N^d=0$ が $H_k$ 上で成立し，
+$f_d|_{H_k}$ は標的の $H$ を経由し，そこで
+\[
+ f_d|_{H_k}=(f_d|_H)\circ\pi|_{H_k}
+\]
+となる．従って第二の同型を得る．
+$\pi_*\mathcal O_{H_k}=\mathcal O_H\oplus\bigoplus_{j=1}^k\mathcal O_H(-j)$
+の次数 $0$ の直和因子が還元の $\mathcal O_H$-線形切断を与える．
+
+残る障害は中間コホモロジーから計算できる．
+$S=\Bbbk[x_0,\ldots,x_N]$ とし，$S_t=0$ for $t<0$ とする．
+\[
+ 0\longrightarrow K_d(t)\longrightarrow\mathcal O(t)^{N+1}
+ \longrightarrow\mathcal O(t+d)\longrightarrow0
+\]
+と，射影空間の直線束の中間コホモロジー消滅から
+\[
+ H^1(K_d(t))\simeq
+ S_{t+d}/(x_0^d,\ldots,x_N^d)_{t+d}
+\]
+である．さらに
+\[
+ 0\longrightarrow\mathcal O(t-d)\longrightarrow K_d(t)
+ \longrightarrow F_d(t)\longrightarrow0
+\]
+において $H^1(\mathcal O(t-d))=H^2(\mathcal O(t-d))=0$ が
+$N\geq3$ により成り立つので，次数付き加群として
+\[
+ M^1(F_d)\simeq
+ \left(S/(x_0^d,\ldots,x_N^d)\right)(d).
+ \label{eq:nullcorr-module}
+\]
+この加群は $\Bbbk[h]$-加群として
+\[
+ x_0^{a_0}\cdots x_{N-1}^{a_{N-1}}
+ \cdot\Bbbk[h]/(h^d),\qquad0\leq a_j\leq d-1,
+\]
+という $d^N$ 個の長さ $d$ の block の直和である．
+生成元次数は $a_0+\cdots+a_{N-1}-d$ なので，
+定理 \ref{thm:jet-defect} における最初の欠損は
+\[
+ t=(a_0+\cdots+a_{N-1}-d)+d=a_0+\cdots+a_{N-1}
+\]
+で生じる．これをすべての指数について足すと所望の Hilbert 級数となる．
+この欠損は零でないので，$k=d$ の還元は加群として分裂しない．
+全 block の長さが $d$ なので $k\geq d$ でも同じ欠損が残る．
+\end{proof}
+
+\begin{corollary}[次元と階数だけによる厚さの上限はない]\label{cor:no-uniform-jet}
+任意の整数 $k\geq0$ に対して，$\mathbb P^3$ 上に非分解階数 $2$ ベクトル束 $F$ と
+超平面 $H$ が存在し，$F|_{H_k}\to F|_H$ は $\mathcal O_H$-加群として分裂する．
+従ってこの種の有限次数分解判定には，次元と階数以外の情報が必要である．
+\end{corollary}
+
+\begin{proof}
+定理 \ref{thm:sharp-examples} で $N=3$，$d=k+1$ と取る．
+\end{proof}
+
+\section{同じ束における超平面の選択への依存}
+
+この節では標数 $0$ とし，$N=3$ の束 $F_d$ を固定する．
+線形形式 $h=\sum_{i=0}^3c_ix_i$ の非零係数の個数を $q$ と書く．
+$1\leq q\leq4$ である．$P_d(z)=1+z+\cdots+z^{d-1}$ と置く．
+
+\begin{proposition}[超平面の台による最初のコホモロジー欠損]\label{prop:support-jets}
+最初に $D^0_{k,t}(F_d,h)$ がある $t$ で零でなくなる整数を $k_0$ とする．
+次の表は $k_0$，およびその次数での欠損の Hilbert 多項式
+$\sum_t\dim D^0_{k_0,t}(F_d,h)z^t$ を与える．
+\[
+\begin{array}{c|c|c|c}
+q&\text{条件}&k_0&\text{欠損の Hilbert 多項式}\\ \hline
+1&\text{すべての }d&d&P_d(z)^3\\
+2&\text{すべての }d&1&P_d(z)^2\\
+3&d\text{ が奇数}&1&z^{(d-1)/2}P_d(z)\\
+3&d\text{ が偶数}&2&2z^{d/2}P_d(z)\\
+4&\text{すべての }d&1&d\,z^{d-1}
+\end{array}
+\]
+特に一般超平面では一次厚化で還元が分裂せず，その $H^0$ の持ち上げの
+欠損は twist $t=d-1$ に集中した $d$ 次元空間である．
+一方，座標超平面では還元は $d-1$ 次まで分裂し，$d$ 次で初めて分裂しなくなる．
+\end{proposition}
+
+\begin{proof}
+$x_i$ の非零定数倍と置換は ideal $(x_0^d,\ldots,x_3^d)$ を保存するので，
+$M^1(F_d)$ の乗法作用を計算する際には $h=x_0+\cdots+x_{q-1}$ としてよい．
+\[
+ A_q=\Bbbk[x_0,\ldots,x_{q-1}]/(x_0^d,\ldots,x_{q-1}^d),\qquad
+ \sigma=q(d-1),\qquad a_j=[z^j]P_d(z)^q
+\]
+と置く．$a_{-1}=0$ と約束する．$A_q$ の $h$-Jordan block は，
+$0\leq j\leq\lfloor\sigma/2\rfloor$ に対して
+\[
+ \text{生成元次数 }j,\qquad
+ \text{長さ }\sigma-2j+1,\qquad
+ \text{重複度 }a_j-a_{j-1}
+ \tag{\dagger}\label{eq:sl2-blocks}
+\]
+で与えられる．この事実の直接の線形代数による証明を後で述べる．
+
+残る $4-q$ 個の変数の単項式の次数を $b$ とする．
+$M^1(F_d)$ の twist $(d)$ を考慮すると，
+\eqref{eq:sl2-blocks} の block は生成元次数 $j+b-d$ を持ち，
+定理 \ref{thm:jet-defect} による欠損は
+\[
+ t=b+\sigma-j+1-d
+\]
+で現れる．従って最短 block の長さと重複度を求めればよい．
+$q=1$ では長さ $d$ の block が一つある．
+$q=2$ では最短 block は長さ $1$，生成元次数 $d-1$，重複度 $1$ である．
+$q=3$ では最短 block は，$d$ が奇数なら長さ $1$・重複度 $1$，
+$d$ が偶数なら長さ $2$・重複度 $2$ である．
+実際，中間次数 $j=\lfloor3(d-1)/2\rfloor$ において
+\[
+ a_j-a_{j-1}=[z^j]\frac{(1-z^d)^3}{(1-z)^2}
+ =3d-2j-2
+\]
+であり，これはそれぞれ $1,2$ となる（$d=1$ は直接同じ結論となる）．
+$q=4$ では最短 block は長さ $1$，生成元次数 $2d-2$，重複度
+\[
+ [z^{2d-2}]\frac{(1-z^d)^4}{(1-z)^3}
+ =\binom{2d}{2}-4\binom d2=d
+\]
+である．それぞれに未使用変数の Hilbert 多項式 $P_d(z)^{4-q}$ と
+上の twist を掛けると表を得る．
+
+最後に \eqref{eq:sl2-blocks} を示す．
+$V=\Bbbk[x]/(x^d)$ に対し
+\[
+ e(x^j)=x^{j+1},\qquad
+ f(x^j)=j(d-j)x^{j-1},\qquad
+ w(x^j)=(2j-d+1)x^j
+\]
+と置く（範囲外の基底は零とする）．直接計算すると
+$[e,f]=w$，$[w,e]=2e$，$[w,f]=-2f$ である．
+$V^{\otimes q}=A_q$ 上で各作用素の和を取れば，$e$ は $h$ の乗法，
+$w$ は次数 $j$ 上で固有値 $2j-\sigma$ を持つ．
+
+この作用は次数の中心に関して対称な chain の直和であることを，
+以下の初等的な議論で確認できる．行列係数は有理数なので，まず $\Bbbk=\mathbb C$ で示せば，
+各行列の冪の rank が標数 $0$ の体で不変であることから一般の場合も従う．
+$V$ 上の基底を直交とし，
+\[
+ \|x^j\|^2=\frac{j!\,(d-1)!}{(d-1-j)!}
+\]
+と定めると $f=e^*$ であり，tensor 積上でも同じ関係が成立する．
+$e v=0$，$wv=\lambda v$ を満たす零でない最高 weight vector を取る．
+交換関係から
+\[
+ ef^rv=r(\lambda-r+1)f^{r-1}v,
+ \qquad
+ \|f^rv\|^2=r(\lambda-r+1)\|f^{r-1}v\|^2.
+\]
+従って $v,fv,\ldots,f^{\lambda}v$ は長さ $\lambda+1$ の chain をなし，
+$\lambda\geq0$ である．この chain の直交補空間は $e,f,w$ によって不変なので，
+帰納的に全空間をこのような chain に分解できる．
+weight が $2j-\sigma$ であることから，最低次数 $j$ の chain は
+最高次数 $\sigma-j$ まで続き，長さは $\sigma-2j+1$ である．
+中間次数までの Hilbert 関数の差を取ると，最低次数 $j$ の chain の個数は
+$a_j-a_{j-1}$ となる．これで \eqref{eq:sl2-blocks} が証明された．
+\end{proof}
+
+\begin{remark}[欠損が消えても分裂したとは限らない]
+表の $q=3$，$d$ 偶数の行では，一次厚化で $D^0$ が消えることだけを述べている．
+これを一次厚化上の $\mathcal O_H$-加群としての分裂と読み替えることはできない．
+その分裂の有無は別の延長類の問題である．
+一般超平面と座標超平面の二つの場合は，それぞれ欠損と明示的な引き戻しにより
+実際の分裂・非分裂の境界が確定している．
+\end{remark}
+
+\begin{remark}[最初の延長類と欠損次元]
+$E_d=F_d|_H$ と置く．$F_d|_{H_{d-1}}$ の射影による自明化を固定すると，
+最初の還元列は
+\[
+ 0\longrightarrow\bigoplus_{j=1}^{d}E_d(-j)
+ \longrightarrow F_d|_{H_d}\longrightarrow E_d\longrightarrow0
+\]
+となる．$H_{d-1}$ への還元が自明なので，この列の延長類の
+$\operatorname{Ext}^1_H(E_d,E_d(-j))$ 成分は $j<d$ で零であり，
+最後の成分 $\eta_d\in\operatorname{Ext}^1_H(E_d,E_d(-d))$ は零でない．
+連結写像の像，すなわち $\eta_d$ による
+$H^0(E_d(t))\to H^1(E_d(t-d))$ の像の次元を次数別に足すと，
+定理 \ref{thm:sharp-examples} の多項式を得る．
+この $d^N$ は持ち上げの欠損の総次元であり，$\operatorname{Ext}^1$ 自体の次元や
+モジュライ空間の次元を意味しない．
+\end{remark}
+
+\section{次の幾何学的課題}
+
+定理 \ref{thm:jet-defect} は，有限厚化を用いた戦略の入力として
+何を証明すべきかを明確にする．高次元の階数 $2$ ベクトル束について，
+中間コホモロジーの短い Jordan block を強制する幾何学的条件と，
+同じ次数での厚化の分裂を強制する条件が同時に得られれば，矛盾を導ける．
+現時点では，Hartshorne 予想の仮定だけからいずれの条件も得ていない．
+特に，既に存在する大域的な束の有限厚化と，
+命題 \ref{prop:tautological-extension} の任意に作れる形式延長とを混同しないことが肝要である．
+
+具体的には，一般超平面の乗法に関する Jordan 型の制約，
+安定性・制限定理・最小 monad が課す制約，および
+有限次数の $\operatorname{Ext}^1(E,E(-j))$ と欠損公式の比較が次の問題となる．
+定理 \ref{thm:sharp-examples} は固定次元でも障害の出現次数が発散するため，
+次数・Chern 類・regularity 等を無視した一様な有限次数の議論は成立しない．
+
+\bibliographystyle{alpha}
+\bibliography{references}
+\end{document}
