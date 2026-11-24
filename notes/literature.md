@@ -1,6 +1,6 @@
 # 一次資料・適用範囲・新規性の確認
 
-2026-11-25 / v1.1。以下は実際に確認した資料と、その限界である。分野全体の調査完了や新規性確定を意味しない。
+2026-11-25 / v1.2。以下は実際に確認した資料と、その限界である。分野全体の調査完了や新規性確定を意味しない。
 
 ## 原点と近年の状況
 
@@ -23,6 +23,10 @@
 - **N. Mohan Kumar, C. Peterson, A. P. Rao**, *Monads on projective spaces*, Manuscripta Math.112 (2003),183–189, DOI10.1007/s00229-003-0389-x。内側cohomologyのない非分解束のrank≥n−1という入力はCoandă原稿での引用・適用を確認。KPR原典全証明は未取得。rank2、n≥4では全項が直線束の和の三項monadによる非分解束の構成は不可。一般のBeilinson複体や非分解中間項を排除する主張ではない。
 - **F. Malaspina and A. P. Rao**, *Rank two bundles on P^n with isolated cohomology*, Bull.LMS55 (2023),2493–2504, DOI [10.1112/blms.12877](https://doi.org/10.1112/blms.12877)、[原稿](https://arxiv.org/pdf/2202.00304)。刊行版Theorem3.6はk>1、n≥4kの孤立型(n,k)を排除。Corollary3.5はn≥8かつH^i_*=0（3≤i≤n−3）なら分解。Proposition2.3はn≥6のrank2非分解束で一つでも内側cohomologyが消えると最小monadの中間項に直線束因子がないことを述べる。原稿版と刊行版の定理番号を混ぜない。
 - **G. Fløystad**, *Monads on projective space*, [arXiv:math/9806147](https://arxiv.org/pdf/math/9806147)。主定理p1の線形複体の存在条件は左射の層としての単射と部分束としての単射を区別する必要がある。rank落ちの条件を確認せず高次元rank2束が得られると結論しない。
+
+## 導来圏における非検出性
+
+- **M. Ballard, D. Favero, L. Katzarkov**, *Orlov spectra: bounds and gaps*, [arXiv:1012.0864v3](https://arxiv.org/pdf/1012.0864)（2013-10-14）。Definition2.10 p9は部分圏Iに関するghostを定義し、Lemma2.12・2.17は生成時間との関係を扱う。Example2.24 p13は点のskyscraperの接ベクトルから、局所自由層に関するghostを与える。従ってghostという概念・幾何学的存在一般は既知。本稿の寄与候補は安定束から負twistへの明示延長、実際の厚化との関係、c2=4の全不可視空間の正確な評価列による記述である。
 
 ## 古典幾何・数値条件
 

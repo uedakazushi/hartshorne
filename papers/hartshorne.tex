@@ -1,4 +1,4 @@
-% 2026-11-25 / v0.2. Mathematical proofs checked; novelty not established.
+% 2026-11-25 / v0.3. Mathematical proofs checked; novelty not established.
 % Engine and output are controlled by the repository .latexmkrc.
 \RequirePackage{fix-cm}
 \documentclass[a4paper,11pt]{ltjsarticle}
@@ -20,7 +20,7 @@
 \renewcommand{\proofname}{証明}
 \title{ベクトル束の有限厚化と法線方向の変形\texorpdfstring{\\}{ }Jordan型とコホモロジーで検出できない延長}
 \author{}
-\date{2026年11月25日\quad v0.2（新規性確認前の研究草稿）}
+\date{2026年11月25日\quad v0.3（新規性確認前の研究草稿）}
 \begin{document}
 \maketitle
 \begin{abstract}
@@ -35,6 +35,8 @@
 標数0の偶数次数の三次元例では，すべての捩りの全コホモロジー制限が全射でも
 還元写像は分裂しない．この構成から，射影平面上の安定束の間の
 コホモロジーでは検出できない延長類を明示する．
+さらに，$c_1=0,c_2=4,H^1(E(1))=0$を満たす射影平面上の安定な階数2束について，
+そのような延長類の全空間が12次元であることを，モナド表示に依存せず証明する．
 Hartshorne分解予想の新しい次元範囲は解決していない．
 使用する束の構成とコホモロジーは既知であり，有限厚化の判定と明示例の
 独立した新規性・公表価値は確認を要する．
@@ -78,6 +80,14 @@ $\mathcal O(-d)\to\mathcal O^4\to\mathcal O(d)$
 安定な $E$ と $\operatorname{Ext}^1(E,E(-1))$ の非零部分空間を作り，
 その全ての元が全ての捩りの cohomology では検出されないことを示す
 （系\ref{cor:stable-four-dimensional-ghosts}）．
+この意味での射は ghost と呼ばれる既知の概念であり，
+その一般的な存在を本稿の新成果とはしない
+\cite[Definition 2.10, Example 2.24]{BallardFaveroKatzarkov2013}．
+最後に定理\ref{thm:ghost-dimension-twelve}では，
+$c_1=0,c_2=4,H^1(E(1))=0$を満たす安定束について，
+全ての捩りの cohomology 検出が一つの全射へ集約され，
+不可視な延長の全空間が12次元となることを証明する．
+この結論は特定のモナド表示を仮定しない．
 
 長完全列，Horrocks の分解判定法，対称平方，null correlation 型モナド，
 有限射による引戻しは既知の道具である．
@@ -298,7 +308,7 @@ $J(v_0,v_1,v_2,v_3)^t=(-v_1,v_0,-v_3,v_2)^t$
 $X=\mathbb P^n$, $n\geq2$, $d\geq1$とし、
 \begin{equation}
 \label{eq:rank-one-end-monad}
- \mathscr C^\bullet=
+ \mathcal C^\bullet=
  \bigl[
  A=\mathcal O_X(-d)
  \xrightarrow{\alpha=J\beta^t}
@@ -326,9 +336,9 @@ $X=\mathbb P^n$, $n\geq2$, $d\geq1$とし、
 \end{lemma}
 
 \begin{proof}
-まず複体$\mathscr C^\bullet$に次数$0$の双線形形式
+まず複体$\mathcal C^\bullet$に次数$0$の双線形形式
 \[
- \omega:\mathscr C^\bullet\otimes\mathscr C^\bullet
+ \omega:\mathcal C^\bullet\otimes\mathcal C^\bullet
  \longrightarrow\mathcal O_X
 \]
 を定める。$B$上では$\omega_B(u,v)=u^tJv$とし、
@@ -343,48 +353,48 @@ $A\otimes L$および$L\otimes A$上では通常の積、
 \[
  \omega(Du,v)+(-1)^{|u|}\omega(u,Dv)=0
 \]
-が成り立つ。ここで$D$は$\mathscr C^\bullet$の微分である。
+が成り立つ。ここで$D$は$\mathcal C^\bullet$の微分である。
 したがって$\omega$は複体の射であり、$E$上に非退化な交代形式を誘導する。
 
 次数付きの交換
 $u\otimes v\mapsto(-1)^{|u||v|}v\otimes u$
 の$+1$固有部分を
-$\mathscr S^\bullet=\operatorname{Sym}^2(\mathscr C^\bullet)$
+$\mathcal S^\bullet=\operatorname{Sym}^2(\mathcal C^\bullet)$
 とする。$2$が可逆なので、これはテンソル積複体の直和因子である。
 モナドは局所的に$E$と可縮な複体との直和になるため、
-$\mathscr S^\bullet$の唯一のコホモロジー層は次数$0$の
+$\mathcal S^\bullet$の唯一のコホモロジー層は次数$0$の
 $\operatorname{Sym}^2E$である。
 $A,L$は奇数次数にあり階数$1$なので、次数$\pm2$の項は
 $\bigwedge^2 A=\bigwedge^2 L=0$となる。
 残る項は
 \begin{align*}
- \mathscr S^{-1}&=A\otimes B
+ \mathcal S^{-1}&=A\otimes B
    =\mathcal O_X(-d)^{\oplus m},\\
- \mathscr S^{0}&=\operatorname{Sym}^2 B\oplus(A\otimes L)
+ \mathcal S^{0}&=\operatorname{Sym}^2 B\oplus(A\otimes L)
    =\mathcal O_X^{\oplus(m(m+1)/2+1)},\\
- \mathscr S^{1}&=B\otimes L
+ \mathcal S^{1}&=B\otimes L
    =\mathcal O_X(d)^{\oplus m}.
 \end{align*}
 
-$K=\ker(\mathscr S^0\to\mathscr S^1)$と置く。
+$K=\ker(\mathcal S^0\to\mathcal S^1)$と置く。
 二つの短完全列
 \[
- 0\longrightarrow K(-a)\longrightarrow\mathscr S^0(-a)
- \longrightarrow\mathscr S^1(-a)\longrightarrow0,
+ 0\longrightarrow K(-a)\longrightarrow\mathcal S^0(-a)
+ \longrightarrow\mathcal S^1(-a)\longrightarrow0,
 \]
 \[
- 0\longrightarrow\mathscr S^{-1}(-a)\longrightarrow K(-a)
+ 0\longrightarrow\mathcal S^{-1}(-a)\longrightarrow K(-a)
  \longrightarrow\operatorname{Sym}^2E(-a)\longrightarrow0
 \]
 を考える。$n\geq2$, $a\geq1$より
 \[
- H^0(\mathscr S^0(-a))=H^1(\mathscr S^0(-a))=0,
- \qquad H^1(\mathscr S^{-1}(-a))=0.
+ H^0(\mathcal S^0(-a))=H^1(\mathcal S^0(-a))=0,
+ \qquad H^1(\mathcal S^{-1}(-a))=0.
 \]
 従って連結準同型は単射
 \begin{equation}
 \label{eq:symmetric-square-edge}
- H^0(\mathscr S^1(-a))
+ H^0(\mathcal S^1(-a))
  \hookrightarrow H^1(\operatorname{Sym}^2E(-a))
 \end{equation}
 を与える。
@@ -392,9 +402,9 @@ $K=\ker(\mathscr S^0\to\mathscr S^1)$と置く。
 次にこの射が所要の拡大を検出することを、符号を含めて確認する。
 形式$\omega$を用いて、複体の射
 \[
- \Phi:\mathscr S^\bullet
- \longrightarrow\mathcal H om^\bullet(\mathscr C^\bullet,
-                                      \mathscr C^\bullet)
+ \Phi:\mathcal S^\bullet
+ \longrightarrow\mathcal H om^\bullet(\mathcal C^\bullet,
+                                      \mathcal C^\bullet)
 \]
 を
 \[
@@ -421,9 +431,9 @@ $\Delta_w=(Jw^t,w)$である。
 $D\Delta_w+\Delta_wD=0$は$J$の交代性からも直接確認できる。
 項ごとに分裂する複体の短完全列
 \[
- 0\longrightarrow\mathscr C^\bullet(-a)
- \longrightarrow\mathscr C^\bullet_w
- \longrightarrow\mathscr C^\bullet\longrightarrow0,
+ 0\longrightarrow\mathcal C^\bullet(-a)
+ \longrightarrow\mathcal C^\bullet_w
+ \longrightarrow\mathcal C^\bullet\longrightarrow0,
  \qquad
  D_w=\begin{pmatrix}D&0\\ \Delta_w&D\end{pmatrix}
 \]
@@ -480,7 +490,7 @@ $fJf^t=0$よりモナドが定まり、そのコホモロジーはベクトル�
 また最高次の法線係数は$f_{i,d}=f_i(p)$であり、少なくとも一つは非零である。
 従って$\nu$は存在して$\nu\leq d$となる。
 
-$E=F_f|_H$とし、制限モナドを$\mathscr C_0^\bullet$と書く。
+$E=F_f|_H$とし、制限モナドを$\mathcal C_0^\bullet$と書く。
 $k<\nu$ならば\eqref{eq:normal-polynomial-expansion}の正次数の項は
 $h^{k+1}$を法として全て消える。
 よって厚化上のモナドは$H$上のモナドの引戻しであり、
@@ -492,7 +502,7 @@ $h^{k+1}$を法として全て消える。
  \mathcal O_{H_\nu}=\bigoplus_{j=0}^{\nu}\mathcal O_H(-j)
 \]
 と分解する。各モナド項をこの分解に従って書くと、
-微分は$\mathscr C_0^\bullet(-j)$上の対角成分と、
+微分は$\mathcal C_0^\bullet(-j)$上の対角成分と、
 層$j=0$から層$j=\nu$への唯一の非対角成分
 \[
  \Delta_\nu=(Jf_\nu^t,f_\nu),
@@ -500,7 +510,7 @@ $h^{k+1}$を法として全て消える。
 \]
 からなる。正の層$j>0$からの同種の項は$h^{\nu+j}=0$のため消える。
 従って複体そのものが、二層の拡大を定める複体と
-$\bigoplus_{j=1}^{\nu-1}\mathscr C_0^\bullet(-j)$との直和に分解する。
+$\bigoplus_{j=1}^{\nu-1}\mathcal C_0^\bullet(-j)$との直和に分解する。
 コホモロジーを取ると
 \[
  F_f|_{H_\nu}\simeq G_\nu\oplus
@@ -619,7 +629,6 @@ $N\geq3$ により成り立つので，次数付き加群として
 \[
  M^1(F_d)\simeq
  \left(S/(x_0^d,\ldots,x_N^d)\right)(d).
-
 \]
 この加群は $\Bbbk[h]$-加群として
 \[
@@ -646,6 +655,24 @@ $N\geq3$ により成り立つので，次数付き加群として
 \begin{proof}
 定理 \ref{thm:sharp-examples} で $N=3$，$d=k+1$ と取る．
 \end{proof}
+
+\begin{remark}[最初の延長類と欠損次元]
+$H=(x_N=0)$ と対応する座標点からの射影を固定し，$E_d=F_d|_H$ と置く．
+$F_d|_{H_{d-1}}$ の射影による自明化を固定すると，
+最初の還元列は
+\[
+ 0\longrightarrow\bigoplus_{j=1}^{d}E_d(-j)
+ \longrightarrow F_d|_{H_d}\longrightarrow E_d\longrightarrow0
+\]
+となる．$H_{d-1}$ への還元が自明なので，この列の延長類の
+$\operatorname{Ext}^1_H(E_d,E_d(-j))$ 成分は $j<d$ で零であり，
+最後の成分 $\eta_d\in\operatorname{Ext}^1_H(E_d,E_d(-d))$ は零でない．
+連結写像の像，すなわち $\eta_d$ による
+$H^0(E_d(t))\to H^1(E_d(t-d))$ の像の次元を次数別に足すと，
+定理 \ref{thm:sharp-examples} の多項式を得る．
+この $d^N$ は持ち上げの欠損の総次元であり，$\operatorname{Ext}^1$ 自体の次元や
+モジュライ空間の次元を意味しない．
+\end{remark}
 
 \subsection{超平面と射影中心の全ての対に対する分類}
 
@@ -917,23 +944,236 @@ $H^2_*(F_2)$ も双対性により同じ長さを持つ．
 \end{example}
 
 
-\begin{remark}[最初の延長類と欠損次元]
-$H=(x_N=0)$ と対応する座標点からの射影を固定し，$E_d=F_d|_H$ と置く．
-$F_d|_{H_{d-1}}$ の射影による自明化を固定すると，
-最初の還元列は
+
+
+\subsection{第二Chern類が4である安定束のghost空間}
+\label{subsec:ghost-exact-dimension}
+
+ここでは明示的な法線微分族を越えて、コホモロジーで検出できない
+拡大類の空間全体を決定する。
+以下で安定性は$\mathcal O_{\mathbb P^2}(1)$に関するslope-stabilityを意味する。
+
+\begin{theorem}[安定束のghost空間の次元]
+\label{thm:ghost-dimension-twelve}
+標数$0$の代数閉体上の$X=\mathbb P^2$とし、$E$を
 \[
- 0\longrightarrow\bigoplus_{j=1}^{d}E_d(-j)
- \longrightarrow F_d|_{H_d}\longrightarrow E_d\longrightarrow0
+ \operatorname{rk}E=2,\qquad c_1(E)=0,\qquad c_2(E)=4,
+ \qquad H^1(X,E(1))=0
 \]
-となる．$H_{d-1}$ への還元が自明なので，この列の延長類の
-$\operatorname{Ext}^1_H(E_d,E_d(-j))$ 成分は $j<d$ で零であり，
-最後の成分 $\eta_d\in\operatorname{Ext}^1_H(E_d,E_d(-d))$ は零でない．
-連結写像の像，すなわち $\eta_d$ による
-$H^0(E_d(t))\to H^1(E_d(t-d))$ の像の次元を次数別に足すと，
-定理 \ref{thm:sharp-examples} の多項式を得る．
-この $d^N$ は持ち上げの欠損の総次元であり，$\operatorname{Ext}^1$ 自体の次元や
-モジュライ空間の次元を意味しない．
+を満たす安定ベクトル束とする。
+全ての$j,t\in\mathbb Z$に対して
+\[
+ H^j(X,E(t))\xrightarrow{\ \eta(t)\ }
+ H^{j+1}(X,E(t-1))
+\]
+が零となる拡大類
+$\eta\in\operatorname{Ext}^1_X(E,E(-1))$の部分空間を$\mathcal G_E$と置く。
+すると自然な完全列
+\begin{equation}
+\label{eq:full-ghost-exact-sequence}
+ 0\longrightarrow\mathcal G_E
+ \longrightarrow\operatorname{Ext}^1(E,E(-1))
+ \xrightarrow{\ \delta\ }
+ \operatorname{Hom}_{\Bbbk}\bigl(H^0(E(1)),H^1(E)\bigr)
+ \longrightarrow0
+\end{equation}
+があり、各空間の次元は
+\[
+ \dim\operatorname{Ext}^1_X(E,E(-1))=16,\qquad
+ h^0(E(1))=h^1(E)=2,\qquad \dim\mathcal G_E=12
+\]
+である。
+ここで$\delta(\eta)$は$t=1$, $j=0$の連結写像である。
+したがって$\mathcal G_E$の非零元は、全ての直線束の全てのshiftからの
+$\operatorname{Hom}$によって零写像を誘導する非零の導来圏の射
+$E\to E(-1)[1]$を与える。
+\end{theorem}
+
+\begin{proof}
+まず数値と消滅を確認する。
+$\det E\simeq\mathcal O_X$なので、外積による非退化交代形式から
+$E^\vee\simeq E$を得る。
+安定性より$H^0(E(t))=0$ $(t\leq0)$であり、Serre双対性より
+$H^2(E(t))=0$ $(t\geq-3)$である。
+Riemann--Rochの公式は
+\[
+ \chi(E(t))=t^2+3t-2
+\]
+となるので、仮定$H^1(E(1))=0$から
+$h^0(E(1))=2$、また$h^1(E)=2$を得る。
+$H^1(E(1))=H^2(E)=0$は$E$が$2$-regularであることを意味する。
+Castelnuovo--Mumford正則性の基本性質とSerre双対性から
+\begin{equation}
+\label{eq:ghost-cohomology-range}
+ \begin{aligned}
+ H^1(E(t))&=0\quad(t\geq1\text{ または }t\leq-4),\\
+ \bigl(h^1(E(-3)),h^1(E(-2)),h^1(E(-1)),h^1(E)\bigr)
+ &=(2,4,4,2).
+ \end{aligned}
+\end{equation}
+となる。
+
+次に評価写像を調べる。$V=H^0(E(1))$とすると
+\begin{equation}
+\label{eq:ghost-evaluation-sequence}
+ 0\longrightarrow V\otimes\mathcal O_X(-1)
+ \longrightarrow E\longrightarrow Q\longrightarrow0
+\end{equation}
+は完全である。
+実際、評価写像が生成点で階数$1$ならば、その像の飽和を二重双対化して
+$\mathcal O_X(b)\subseteq E(1)$を得る。
+階数$1$の反射層への射は余次元$2$の集合を越えて延長するので、
+$V$の二つの線形独立な切断は$\mathcal O_X(b)$の切断となる。
+従って$b\geq1$であるが、これは傾き$1$の$E(1)$の安定性に反する。
+よって評価写像は生成点で階数$2$であり、局所自由層からの写像なので単射である。
+$Q$の台の次元は$1$であり、そのHilbert多項式は
+\[
+ \chi(Q(t))=\chi(E(t))-2\chi(\mathcal O_X(t-1))=2t-2
+\]
+となる。
+\eqref{eq:ghost-evaluation-sequence}を$1$だけ捩ると
+$H^0(Q(1))=H^1(Q(1))=0$を得る。
+
+ここから$Q$の小さい分解を導く。
+$H^1(Q(1))=0$と$\dim\operatorname{Supp}Q=1$より、$Q(2)$は$0$-regularである。
+従って$Q(2)$は大域生成され、$h^0(Q(2))=\chi(Q(2))=2$となる。
+その評価列を
+\[
+ 0\longrightarrow K\longrightarrow\mathcal O_X^{\oplus2}
+ \longrightarrow Q(2)\longrightarrow0
+\]
+と書く。
+大域切断の写像が同型なので$H^1(K)=0$であり、
+この列を$-1$だけ捩ると$H^2(K(-1))=H^1(Q(1))=0$を得る。
+従って$K(1)$も$0$-regularである。
+また
+\[
+ h^0(K(1))=2h^0(\mathcal O_X(1))-h^0(Q(3))=6-4=2
+\]
+である。
+$K(1)$は階数$2$のtorsion-free層であり、二つの大域切断で生成されるから
+$\mathcal O_X^{\oplus2}\to K(1)$は同型である。
+ここではその核が階数$0$であり、torsion-free層$\mathcal O_X^{\oplus2}$の
+部分層であることを用いた。
+従って
+\begin{equation}
+\label{eq:ghost-evaluation-cokernel-resolution}
+ 0\longrightarrow\mathcal O_X(-3)^{\oplus2}
+ \longrightarrow\mathcal O_X(-2)^{\oplus2}
+ \longrightarrow Q\longrightarrow0
+\end{equation}
+を得る。
+
+\eqref{eq:ghost-evaluation-cokernel-resolution}に$E(-2)$をテンソルすると
+\[
+ 0\longrightarrow E(-5)^{\oplus2}
+ \longrightarrow E(-4)^{\oplus2}
+ \longrightarrow E\otimes Q(-2)\longrightarrow0
+\]
+となる。
+$H^0(E(-4))=0$および
+$H^1(E(-5))\simeq H^1(E(2))^\vee=0$より
+\[
+ \operatorname{Hom}_X(E,Q(-2))
+ =H^0(E\otimes Q(-2))=0
+\]
+である。
+Serre双対性から
+\[
+ \operatorname{Ext}^2_X(Q,E(-1))
+ \simeq\operatorname{Hom}_X(E(-1),Q(-3))^\vee
+ =0
+\]
+を得る。
+従って\eqref{eq:ghost-evaluation-sequence}へ
+$\operatorname{RHom}_X(-,E(-1))$を適用すると
+\[
+ \operatorname{Ext}^1_X(E,E(-1))
+ \longrightarrow
+ V^\vee\otimes H^1(X,E)
+ \longrightarrow0
+\]
+は全射である。
+この射は、切断$\mathcal O_X(-1)\to E$で拡大を引き戻す射であり、
+まさに$\delta$である。
+
+この一つの写像の核が全てのghostであることを、双対性の条件を含めて確認する。
+\eqref{eq:ghost-cohomology-range}と安定性による消滅から、
+零でない可能性を持つコホモロジー写像は
+\[
+ H^0(E(1))\longrightarrow H^1(E),\qquad
+ H^1(E(-3))\longrightarrow H^2(E(-4))
+\]
+の二つだけである。
+交代形式に関する随伴を$A\mapsto A^\dagger$と書く。
+階数$2$では
+\[
+ \mathcal E nd(E)=\mathcal O_X\oplus\mathfrak{sp}(E),
+ \qquad \mathfrak{sp}(E)\simeq\operatorname{Sym}^2E,
+ \qquad A^\dagger=-A\quad(A\in\mathfrak{sp}(E))
+\]
+となる。
+$H^1(\mathcal O_X(-1))=0$なので、
+全ての$\operatorname{Ext}^1_X(E,E(-1))$の元は
+$H^1(\mathfrak{sp}(E)(-1))$に属する。
+従って随伴はこの拡大類の空間で$-1$として作用する。
+Serre双対性のcup積との整合性により、上の二つの写像は符号を除いて互いの双対である。
+特に一方の消滅と他方の消滅は同値である。
+従って$\mathcal G_E=\ker\delta$であり、
+\eqref{eq:full-ghost-exact-sequence}が得られた。
+
+最後に次元を計算する。
+$\operatorname{ch}(\mathcal E nd(E))=4-16H^2$から
+\[
+ \chi(\mathcal E nd(E)(-1))=-16
+\]
+である。
+安定性より
+$\operatorname{Hom}(E,E(-1))=\operatorname{Hom}(E,E(-2))=0$なので、
+Serre双対性と合わせて
+$h^0(\mathcal E nd(E)(-1))=h^2(\mathcal E nd(E)(-1))=0$となる。
+従って$\dim\operatorname{Ext}^1_X(E,E(-1))=16$であり、
+$\delta$の標的の次元が$2\cdot2=4$であることから$\dim\mathcal G_E=12$を得る。
+\end{proof}
+
+\begin{corollary}[座標平方の例における全ghost空間]
+\label{cor:coordinate-square-full-ghosts}
+$F_2$を$\mathbb P^3$上の座標平方モナド束とし、
+係数がちょうど三つ非零である超平面$H$に対して$E=F_2|_H$と置く。
+すると定理\ref{thm:ghost-dimension-twelve}の仮定を満たす。
+従って$E\to E(-1)[1]$という射の全ghost空間は$12$次元であり、
+系\ref{cor:stable-four-dimensional-ghosts}の法線微分による$4$次元空間を含む。
+\end{corollary}
+
+\begin{proof}
+安定性は系\ref{cor:stable-four-dimensional-ghosts}で確認した。
+モナドから$c_1(E)=0$, $c_2(E)=4$である。
+残る$H^1(E(1))=0$を確認する。
+超平面上の座標を$x,y,z$と取ると、四つの二次式の張る空間は
+\[
+ \langle x^2,xy,y^2,z^2\rangle
+\]
+である。
+これらで生成されるイデアル$I=((x,y)^2,z^2)$は全ての三次式を含む。
+実際、三次単項式は$x,y$に関する次数が$2$以上であるか、$z^2$で割り切れる。
+モナドの二つの短完全列を$1$だけ捩ると
+\[
+ H^1(E(1))\simeq(\Bbbk[x,y,z]/I)_3=0
+\]
+となる。
+\end{proof}
+
+\begin{remark}
+定理\ref{thm:ghost-dimension-twelve}は特定のモナド表示を仮定しない。
+$H^1(E(1))=0$は安定束のflatな族において開条件であり、上の系はその条件が
+空でないことを示す。
+従って$12$次元という結論は一つの明示例だけに依存しない。
+一方、法線微分から構成した$4$次元部分空間の役割は、
+実際の全ての射影中心による一次近傍の拡大類を含むという幾何学的な実現にある。
+この定理およびghostという解釈の新規性は、安定束のモジュライ、
+Brill--Noether型の評価写像、モナドの変形理論に関する既存研究との比較が必要である。
 \end{remark}
+
 
 \section{次の幾何学的課題}
 
@@ -950,7 +1190,8 @@ $H^0(E_d(t))\to H^1(E_d(t-d))$ の像の次元を次数別に足すと，
 非分解な中間項や多階数の端が現れる．その場合，対称平方の長さと
 負の捩りのコホモロジーが変わり，今回の単射性を直接は適用できない．
 この障害を明示して一般化できる条件を求めること，および
-系\ref{cor:stable-four-dimensional-ghosts}の不可視な延長全体と積構造を調べることが
+定理\ref{thm:ghost-dimension-twelve}の評価写像による記述を
+他のChern類・より高い捩りへ拡張し，Yoneda積と幾何学的な実現を調べることが
 具体的な次の課題である．一般の束へ strong Lefschetz 性を仮定してはならない．
 定理 \ref{thm:sharp-examples} は固定次元でも障害の出現次数が発散するため，
 次数・Chern 類・regularity 等を無視した一様な有限次数の議論は成立しない．
